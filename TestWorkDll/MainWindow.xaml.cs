@@ -40,12 +40,12 @@ namespace TestWorkDll
                 //Lab1.Content += SampleAssembly.GetName()+ "\n";
                 foreach (Type oType in SampleAssembly.GetTypes())
                 {
+                    
                     TxBox.Text += oType.Name + "\n";
-
-                    foreach (MemberInfo members in oType.GetMembers())
-                    {
-                       TxBox.Text += "    -" + members.Name + "\n";
-                    }
+                        foreach (MemberInfo members in oType.GetMembers(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+                        {
+                                TxBox.Text += "    -" + members.Name + "\n";
+                        }
                     
                 }
             }
